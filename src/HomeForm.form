@@ -114,7 +114,7 @@
               <Font name="Cooper Black" size="24" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="90" green="49" red="e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Hello! what would you like to do today?"/>
           </Properties>
@@ -128,7 +128,7 @@
               <Font name="Cooper Black" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="1b" green="1b" red="a0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="New Booking"/>
           </Properties>
@@ -145,7 +145,7 @@
               <Font name="Cooper Black" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="1b" green="1b" red="a0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Edit Booking"/>
           </Properties>
@@ -162,7 +162,7 @@
               <Font name="Cooper Black" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="1b" green="1b" red="a0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="View Bookings"/>
           </Properties>
@@ -179,7 +179,7 @@
               <Font name="Cooper Black" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="1b" green="1b" red="a0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete Booking"/>
           </Properties>
@@ -190,7 +190,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Nadam\OneDrive\&#x633;&#x637;&#x62d; &#x627;&#x644;&#x645;&#x643;&#x62a;&#x628;\Pictures\Murgan2.png"/>
+              <Image iconType="3" name="/&#x634;&#x639;&#x627;&#x631;.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>

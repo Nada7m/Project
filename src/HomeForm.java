@@ -41,12 +41,12 @@ public class HomeForm extends javax.swing.JFrame {
         jLayeredPane1.setForeground(new java.awt.Color(153, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(14, 73, 144));
         jLabel1.setText("Hello! what would you like to do today?");
 
         jButton1.setBackground(new java.awt.Color(140, 215, 252));
         jButton1.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 0, 0));
+        jButton1.setForeground(new java.awt.Color(160, 27, 27));
         jButton1.setText("New Booking");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +56,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(140, 215, 252));
         jButton2.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
+        jButton2.setForeground(new java.awt.Color(160, 27, 27));
         jButton2.setText("Edit Booking");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +66,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(140, 215, 252));
         jButton3.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 0, 0));
+        jButton3.setForeground(new java.awt.Color(160, 27, 27));
         jButton3.setText("View Bookings");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +76,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(140, 215, 252));
         jButton4.setFont(new java.awt.Font("Cooper Black", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(204, 0, 0));
+        jButton4.setForeground(new java.awt.Color(160, 27, 27));
         jButton4.setText("Delete Booking");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +84,7 @@ public class HomeForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nadam\\OneDrive\\سطح المكتب\\Pictures\\Murgan2.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/شعار.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
