@@ -38,7 +38,7 @@ public class EditBooking extends javax.swing.JFrame {
         });
     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
@@ -325,31 +325,31 @@ public class EditBooking extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void ComboBoxTypeActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void ComboBoxTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTypeActionPerformed
         // TODO add your handling code here:
-    }                                            
+    }//GEN-LAST:event_ComboBoxTypeActionPerformed
 
-    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
         // TODO add your handling code here:
-    }                                     
+    }//GEN-LAST:event_PriceActionPerformed
 
-    private void TextPeopleActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void TextPeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPeopleActionPerformed
         // TODO add your handling code here:
-    }                                          
+    }//GEN-LAST:event_TextPeopleActionPerformed
 
-    private void TextBookingIDActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void TextBookingIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextBookingIDActionPerformed
    loadBookingDetails();
-    }                                             
+    }//GEN-LAST:event_TextBookingIDActionPerformed
 
-    private void TextCustomerIDActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void TextCustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCustomerIDActionPerformed
         // TODO add your handling code here:
-    }                                              
-    private void ButtonBackActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    }//GEN-LAST:event_TextCustomerIDActionPerformed
+    private void ButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBackActionPerformed
     this.setVisible(false);
-    }                                          
-    private void ButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    }//GEN-LAST:event_ButtonBackActionPerformed
+    private void ButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSaveActionPerformed
    if (currentBookingID == -1) {
             JOptionPane.showMessageDialog(this, "Please load a booking first before attempting to update.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -386,8 +386,8 @@ public class EditBooking extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Database Error during update: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }                                
-    }                                          
-    private void ButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    }//GEN-LAST:event_ButtonSaveActionPerformed
+    private void ButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelActionPerformed
       if (currentBookingID == -1) {
             JOptionPane.showMessageDialog(this, "No booking is currently loaded to delete", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -423,14 +423,14 @@ public class EditBooking extends javax.swing.JFrame {
                 try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); } 
             }
         }
-    }                                            
-    private void dActionPerformed(java.awt.event.ActionEvent evt) {                                  
+    }//GEN-LAST:event_ButtonCancelActionPerformed
+    private void dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dActionPerformed
         // TODO add your handling code here:
-    }                                 
+    }//GEN-LAST:event_dActionPerformed
 
-    private void mActionPerformed(java.awt.event.ActionEvent evt) {                                  
+    private void mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mActionPerformed
         // TODO add your handling code here:
-    }                                 
+    }//GEN-LAST:event_mActionPerformed
     private void loadBookingDetails() {clearBookingFields(false); 
         try {
             currentBookingID = Integer.parseInt(TextBookingID.getText().trim());
@@ -592,7 +592,7 @@ try {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookingID;
     private javax.swing.JButton ButtonBack;
     private javax.swing.JButton ButtonCancel;
@@ -617,6 +617,6 @@ try {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JTextField m;
     private javax.swing.JTextField y;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 
 }
