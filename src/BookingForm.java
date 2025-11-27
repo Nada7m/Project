@@ -258,6 +258,11 @@ public class BookingForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TripType, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numberOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -286,22 +291,14 @@ public class BookingForm extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel12)
                                         .addComponent(year, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                                .addComponent(Price))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numberOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Price)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(473, 473, 473))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(473, 473, 473))
             .addGroup(layout.createSequentialGroup()
                 .addGap(296, 296, 296)
                 .addComponent(addBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,54 +385,74 @@ public class BookingForm extends javax.swing.JFrame {
 
     private void addBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookingActionPerformed
         String firstName = FirstName.getText();
-        String lastName = LastName.getText();
-        String phone = phoneNum.getText();
-        String emailAddress = email.getText();
-        String addressText = address.getText();
-        String tripType = (String) TripType.getSelectedItem();
-        int NumberOfPeople = Integer.parseInt(numberOfPeople.getText());
-        int Day = Integer.parseInt(day.getText());
-        int Month = Integer.parseInt(month.getText());
-        int Year = Integer.parseInt(year.getText());
-        //عدم السماح بترك حقول إلزامية فارغة
-        if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty()
-                || NumberOfPeople <= 0 || Day <= 0 || Month <= 0 || Year <= 0) {
-            JOptionPane.showMessageDialog(this, "Make sure to fill in all required fields");
+    String lastName = LastName.getText();
+    String phone = phoneNum.getText();
+    String emailAddress = email.getText();
+    String addressText = address.getText();
+    String tripType = (String) TripType.getSelectedItem();
+    int NumberOfPeople = 0;
+    int Day = 0;
+    int Month = 0;
+    int Year = 0;
+    //  تحويل المدخلات الرقمية والتأكد من أنها أرقام صحيحة
+    try {
+        NumberOfPeople = Integer.parseInt(numberOfPeople.getText());
+        Day = Integer.parseInt(day.getText());
+        Month = Integer.parseInt(month.getText());
+        Year = Integer.parseInt(year.getText());
+        //ضمان إدخال عدد اشخاص منطقي
+        if (NumberOfPeople <= 0) {
+            throw new IllegalArgumentException("The number of people cannot be less than one");
+        }      
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter valid numbers for all numeric fields.");
+        return;
+    } catch (IllegalArgumentException e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+        return;
+    }
+    // عدم السماح بترك الحقول الإلزامية فارغة
+    if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all required fields.");
+        return;
+    }
+    // التحقق من صحة رقم الهاتف
+    if (!phone.matches("\\d{10}")) {
+        JOptionPane.showMessageDialog(this, "Phone number must be 10 digits.");
+        return;
+    }
+    // التحقق من صحة التاريخ
+    if (Year <= 2024 || Year > LocalDate.now().getYear() || Month < 1 || Month > 12 || Day < 1 || Day > 31) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid date.");
+        return;
+    }
+    try {
+        LocalDate tripDate = LocalDate.of(Year, Month, Day);
+        java.sql.Date sqlDate = java.sql.Date.valueOf(tripDate);
+        // إدخال بيانات العميل في جدول العملاء
+        String insertCustomer = "INSERT INTO Customer (customerFname, customerLname, phone, email, address) "
+                + "VALUES ('" + firstName + "', '" + lastName + "', '" + phone + "', '" + emailAddress + "', '" + addressText + "')";
+        DBConnection.executeUpdate(insertCustomer);
+        // استخدام رقم الهاتف للحصول على رقم العميل
+        String getID = "SELECT customerID FROM Customer WHERE phone = '" + phone + "'";
+        ResultSet result = DBConnection.executeQuery(getID);
+        int customerID = 0;
+        if (result.next()) {
+            customerID = result.getInt("customerID");
+        }
+        if (customerID == 0) {
+            JOptionPane.showMessageDialog(this, "Sorry, we couldn't find the customer.");
             return;
         }
-        try {
-            // ضمان ان الرقم مكون من عشرة ارقام و ليتس حروف 
-            if (!phone.matches("\\d{10}")) {
-                throw new IllegalArgumentException("Phone number must be 10 digits");
-            }
-            LocalDate tripDate = LocalDate.of(Year, Month, Day);
-            java.sql.Date sqlDate = java.sql.Date.valueOf(tripDate);
-           //إدخال بيانات العميل في جدول العميل في قاعدة البيانات
-            String insertCustomer = "INSERT INTO Customer (customerFname, customerLname, phone, email, address) "
-                    + "VALUES ('" + firstName + "', '" + lastName + "', '" + phone + "', '" + emailAddress + "', '" + addressText + "')";
-            DBConnection.executeUpdate(insertCustomer);
-            //استخدم رقم الهاتف للوصول لرقم العميل و من ثم يتمم حجزه
-            String getID = "SELECT customerID FROM Customer WHERE phone = '" + phone + "'";
-            ResultSet result = DBConnection.executeQuery(getID);
-            int customerID = 0;
-            if (result.next()) {
-                customerID = result.getInt("customerID");
-            }
-            if (customerID == 0) {
-                JOptionPane.showMessageDialog(this, "Sorry We Couldn't find a customer");
-                return;
-            }
-            double price = Double.parseDouble(Price.getText().replace(" SAR", ""));
-            // إدخال بيانات الحجز في جدول الحجز
-            String insertBooking = "INSERT INTO Booking (customerID, tripType, tripDate, passengersNum, price) VALUES ("
-                    + customerID + ", '" + tripType + "', '" + sqlDate + "', " + NumberOfPeople + ", " + price + ")";
-            DBConnection.executeUpdate(insertBooking);
-            JOptionPane.showMessageDialog(this, "Booking added successfully!");
-        } catch (IllegalArgumentException e) {//استثناء خاص
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        } catch (Exception e) {//استثناء عام
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
+        // إدخال بيانات الحجز في جدول الحجز
+        double price = Double.parseDouble(Price.getText().replace(" SAR", ""));
+        String insertBooking = "INSERT INTO Booking (customerID, tripType, tripDate, passengersNum, price) VALUES ("
+                + customerID + ", '" + tripType + "', '" + sqlDate + "', " + NumberOfPeople + ", " + price + ")";
+        DBConnection.executeUpdate(insertBooking);
+        JOptionPane.showMessageDialog(this, "Booking added successfully!");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_addBookingActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
