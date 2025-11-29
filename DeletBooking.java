@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 public class DeletBooking extends javax.swing.JFrame {
 
@@ -120,7 +121,12 @@ public class DeletBooking extends javax.swing.JFrame {
     String idText = bookingIDField.getText().trim();
 
     if (idText.isEmpty()) {
-        messageLabel.setText("Please enter Booking ID");
+        JOptionPane.showMessageDialog(
+                this,
+                "Please enter Booking ID",
+                "Message",
+                JOptionPane.WARNING_MESSAGE
+        );
         return;
     }
 
@@ -139,16 +145,32 @@ public class DeletBooking extends javax.swing.JFrame {
         int rows = pst.executeUpdate();
 
         if (rows > 0) {
-            messageLabel.setText("Booking deleted successfully");
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Booking deleted successfully",
+                    "Message",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            bookingIDField.setText("");
         } else {
-            messageLabel.setText("Booking ID not found");
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Booking ID not found",
+                    "Message",
+                    JOptionPane.WARNING_MESSAGE
+            );
         }
 
         pst.close();
         conn.close();
 
     } catch (NumberFormatException e) {
-        messageLabel.setText("Invalid number format");
+        JOptionPane.showMessageDialog(
+                this,
+                "Invalid number format",
+                "Message",
+                JOptionPane.WARNING_MESSAGE
+        );
     } catch (Exception e) {
     }
 
