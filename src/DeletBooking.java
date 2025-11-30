@@ -3,6 +3,7 @@ import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 public class DeletBooking extends javax.swing.JFrame {
 
+
     /**
      * Creates new form DeletBooking
      */
@@ -24,13 +25,12 @@ public class DeletBooking extends javax.swing.JFrame {
         bookingIDField = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
-        messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Cooper Black", 0, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(14, 73, 144));
-        jLabel1.setText("Delete Your Booking");
+        jLabel1.setText("Delete Your Booking ");
 
         jLabel2.setFont(new java.awt.Font("Cooper Black", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(160, 27, 27));
@@ -42,6 +42,7 @@ public class DeletBooking extends javax.swing.JFrame {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(212, 235, 252));
         deleteBtn.setFont(new java.awt.Font("Cooper Black", 0, 35)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(24, 80, 141));
         deleteBtn.setText("Delete");
@@ -51,6 +52,7 @@ public class DeletBooking extends javax.swing.JFrame {
             }
         });
 
+        backBtn.setBackground(new java.awt.Color(212, 235, 252));
         backBtn.setFont(new java.awt.Font("Cooper Black", 0, 35)); // NOI18N
         backBtn.setForeground(new java.awt.Color(24, 80, 141));
         backBtn.setText("Back");
@@ -60,66 +62,50 @@ public class DeletBooking extends javax.swing.JFrame {
             }
         });
 
-        messageLabel.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bookingIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(282, 282, 282))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bookingIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(166, 166, 166))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(messageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(201, 201, 201))))
+                        .addComponent(jLabel1)
+                        .addGap(232, 232, 232))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bookingIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(66, 66, 66)
+                .addGap(90, 90, 90)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(messageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bookingIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(103, 103, 103))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bookingIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingIDFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bookingIDFieldActionPerformed
-
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
 
     String idText = bookingIDField.getText().trim();
-
     if (idText.isEmpty()) {
         JOptionPane.showMessageDialog(
                 this,
@@ -174,11 +160,13 @@ public class DeletBooking extends javax.swing.JFrame {
     } catch (Exception e) {
     }
 
-
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    private void bookingIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingIDFieldActionPerformed
+    }//GEN-LAST:event_bookingIDFieldActionPerformed
+
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-    new HomeForm().setVisible(true);
+new HomeForm().setVisible(true);
     this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -223,6 +211,5 @@ public class DeletBooking extends javax.swing.JFrame {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel messageLabel;
     // End of variables declaration//GEN-END:variables
 }
